@@ -1,0 +1,40 @@
+body {
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+button {
+    cursor: pointer;
+}
+
+form {
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hide {
+    display:none;
+}
+
+form > label, button {
+    margin: 20px 0px 20px 0px;
+}
+
+.new {
+    background: none;
+    border: black 1px solid;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 10%;
+    
+}

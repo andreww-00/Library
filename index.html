@@ -5,10 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <title>Library</title>
 </head>
 <body>
-    <h3>test</h3>
+    <button class="new">New Book</button>
+    <form action="#" method="post" id="form" class="hide">
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title">
+        <label for="Author">Author:</label>
+        <input type="text" id="Author" name="Author">
+        <label for="PageCount">Page Count:</label>
+        <input type="number" id="PageCount" name="PageCount">
+        <button>Read?</button>
+        <button>Submit</button>
+    </form>
 </body>
 </html>

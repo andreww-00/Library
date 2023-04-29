@@ -12,14 +12,12 @@ function Book(title, author, pageCount, read) {
   this.author = author;
   this.pageCount = pageCount;
   this.read = read;
-  this.info = function () {
-    console.log(`${this.title} by ${this.author} is ${this.pageCount} long`);
-  };
+  this.info = `${this.title} by ${this.author} is ${this.pageCount} long`;
 }
 
 function addBookToLibrary() {
   const book = new Book(
-    prompt("enter book tite"),
+    prompt("enter book title"),
     prompt("enter author"),
     prompt("enter page count"),
     prompt("enter read status")
@@ -31,10 +29,12 @@ function addBookToLibrary() {
 //   myLibrary.forEach()
 // }
 
-// console.log(myLibrary.info);
+const submit = document.querySelector(".submit");
+submit.addEventListener("click", function() {
+    addBookToLibrary();
+});
 
 let newBook = document.querySelector(".new");
 newBook.addEventListener("click", function () {
-  console.log("test");
   document.getElementById("form").classList.toggle("hide");
 });

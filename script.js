@@ -30,8 +30,8 @@ function addBookToLibrary() {
 // }
 
 const submit = document.querySelector(".submit");
-submit.addEventListener("click", function() {
-    addBookToLibrary();
+submit.addEventListener("click", function () {
+  addBookToLibrary();
 });
 
 let newBook = document.querySelector(".new");

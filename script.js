@@ -1,3 +1,9 @@
+const titleElem = document.querySelector("#Title");
+const authorElem = document.querySelector("#Author");
+const pageNumberElem = document.querySelector("#PageCount");
+const readElem = document.querySelector("#read");
+
+
 const myLibrary = [
   {
     title: "The Hobbit",
@@ -12,13 +18,7 @@ function Book(title, author, pageCount, read) {
   this.author = author;
   this.pageCount = pageCount;
   this.read = read;
-  this.info = `${this.title} by ${this.author} is ${this.pageCount} long`;
-}
-
-function addBookToLibrary(obj) {
-  const book = new Book(obj);
-  myLibrary.push(book);
-  console.log(myLibrary);
+  this.info = `${this.title} by ${this.author} is ${this.pageCount} pages long ${this.read}`;
 }
 
 // function displayLibrary () {
@@ -28,11 +28,19 @@ function addBookToLibrary(obj) {
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const data = new FormData(form); 
-  const obj = Object.fromEntries(data);
-  myLibrary.push(obj);
-  console.log(myLibrary);
+  let titleCont = titleElem.value;
+  let authorCont = authorElem.value;
+  let pageNumberCont = Number(pageNumberElem.value);
+  let readCont = ""
+  if (readElem.checked === true) {
+    readCont = "read";
+  } else {
+    readCont = "not read yet";
+  }
+  let newBook = new Book(titleCont, authorCont, pageNumberCont, readCont);
+  myLibrary.push(newBook);
   document.getElementById("form").classList.toggle("hide");
+  console.log(myLibrary);
 });
 
 let newBook = document.querySelector(".new");

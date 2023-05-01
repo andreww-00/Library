@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <div class="bookshelf">
+        <div class="book">
+        </div>
+    </div>
     <button class="new">New Book</button>
     <form action="#" method="post" id="form" class="hide">
         <label for="Title">Title:</label>
@@ -19,7 +23,13 @@
         <input type="text" id="Author" name="Author">
         <label for="PageCount">Page Count:</label>
         <input type="number" id="PageCount" name="PageCount">
-        <button>Read?</button>
+        <p>Have you Read?</p>
+        <div class="radio">
+            <label for="read">yes</label>
+            <input type="radio" id="read" name="read" value="yes">
+            <label for="read">no</label>
+            <input type="radio" id="read" name="read" value="no">
+        </div>
         <button class="submit">Submit</button>
     </form>
 </body>

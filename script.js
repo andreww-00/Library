@@ -15,23 +15,24 @@ function Book(title, author, pageCount, read) {
   this.info = `${this.title} by ${this.author} is ${this.pageCount} long`;
 }
 
-function addBookToLibrary() {
-  const book = new Book(
-    prompt("enter book title"),
-    prompt("enter author"),
-    prompt("enter page count"),
-    prompt("enter read status")
-  );
+function addBookToLibrary(obj) {
+  const book = new Book(obj);
   myLibrary.push(book);
+  console.log(myLibrary);
 }
 
 // function displayLibrary () {
 //   myLibrary.forEach()
 // }
 
-const submit = document.querySelector(".submit");
-submit.addEventListener("click", function () {
-  addBookToLibrary();
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(form); 
+  const obj = Object.fromEntries(data);
+  myLibrary.push(obj);
+  console.log(myLibrary);
+  document.getElementById("form").classList.toggle("hide");
 });
 
 let newBook = document.querySelector(".new");

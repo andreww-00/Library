@@ -11,23 +11,30 @@
 </head>
 
 <body>
-    <div class="bookshelf">
-        <div class="book">
-        </div>
+    <div class="header">
+        <h3>My Library</h3>
+        <button class="new">New Book</button>
     </div>
-    <button class="new">New Book</button>
-    <form action="#" method="post" id="form" class="hide">
-        <label for="Title">Title:</label>
-        <input type="text" id="Title" name="Title">
-        <label for="Author">Author:</label>
-        <input type="text" id="Author" name="Author">
-        <label for="PageCount">Page Count:</label>
-        <input type="number" id="PageCount" name="PageCount">
-        <label for="read">Finished this book?</label>
-        <input type="checkbox" id="read" name="read" value="yes">
-        
-        <button class="submit">Submit</button>
-    </form>
+    <div class="content">
+        <div class="bookshelf">
+            <div class="placeholder"></div>
+        </div>
+        <form action="#" method="post" id="form" class="hide">
+            <label for="Title">Title:</label>
+            <input type="text" id="Title" name="Title">
+            <label for="Author">Author:</label>
+            <input type="text" id="Author" name="Author">
+            <label for="PageCount">Page Count:</label>
+            <input type="number" id="PageCount" name="PageCount">
+            <label for="read">Finished this book?</label>
+            <input type="checkbox" id="read" name="read" value="yes">
+            <button class="submit">Submit</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>Footer Content</p>
+       
+    </div>
 </body>
 
 </html>

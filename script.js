@@ -3,18 +3,10 @@ const authorSelector = document.querySelector('#Author');
 const pageNumberSelector = document.querySelector('#PageCount');
 const readElem = document.querySelector('#read');
 const bookShelf = document.querySelector('.bookshelf');
-const placeHolder = document.querySelector('.placeholder');
 const form = document.querySelector('form');
 const newBook = document.querySelector('.new');
 
-const myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'J. R. R. Tolkein',
-    pageCount: 304,
-    read: 'read',
-  },
-];
+const myLibrary = [];
 
 function Book(title, author, pageCount, read) {
   this.title = title;
@@ -37,8 +29,6 @@ function addToLibrary() {
   let newBook = new Book(titleCont, authorCont, pageNumberCont, readCont);
   myLibrary.push(newBook);
 }
-
-placeHolder.textContent = myLibrary[0].title + ' by '+ myLibrary[0].author + ', ' + myLibrary[0].pageCount + ' pages long, ' + myLibrary[0].read;
 
 function displayBook() {
   let index = (myLibrary.length - 1);
@@ -69,6 +59,11 @@ newBook.addEventListener('click', () => {
   document.getElementById('form').classList.toggle('hide');
 });
 
-// for (let i = 0; i < myLibrary.length; i += 1) {
-//   console.log('test');
-// }
+// Displays example books on webpage on load.
+const bookOne = new Book('The Hobbit', 'J. R. R. Tolkein', 304, 'read');
+const bookTwo = new Book('Foundations', 'Isaac Asimov', 255, 'not read yet');
+myLibrary.push(bookOne);
+displayBook();
+myLibrary.push(bookTwo);
+displayBook();
+

@@ -14,7 +14,8 @@ body {
     justify-content: space-evenly;
     align-items: center;
     position: fixed;
-    top: 0%;    
+    top: 0%; 
+
 }
 
 .footer {
@@ -27,6 +28,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0.80;
 }
 
 /* .content {
@@ -40,10 +42,10 @@ body {
 .bookshelf {
     width: 100vw;
     display: grid;
-    gap: 1rem;
+    gap: 3rem;
     padding: 125px 40px 40px 40px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-template-rows: repeat(auto, 100px);
+    /* grid-template-rows: repeat(auto, 100px); */
 }
 
 button {
@@ -83,6 +85,7 @@ form > label, button {
 
 .placeholder {
     border: 1px black solid;
-    width: 400px;
-    height: 250px;
+    width: 450px;
+    height: 200px;
+    background-color: #fff;
 }

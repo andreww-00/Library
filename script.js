@@ -1,6 +1,6 @@
 const titleElem = document.querySelector('#Title');
-const authorElem = document.querySelector('#Author');
-const pageNumberElem = document.querySelector('#PageCount');
+const authorSelector = document.querySelector('#Author');
+const pageNumberSelector = document.querySelector('#PageCount');
 const readElem = document.querySelector('#read');
 const bookShelf = document.querySelector('.bookshelf');
 const placeHolder = document.querySelector('.placeholder');
@@ -26,8 +26,8 @@ function Book(title, author, pageCount, read) {
 
 function addToLibrary() {
   let titleCont = titleElem.value;
-  let authorCont = authorElem.value;
-  let pageNumberCont = Number(pageNumberElem.value);
+  let authorCont = authorSelector.value;
+  let pageNumberCont = Number(pageNumberSelector.value);
   let readCont = '';
   if (readElem.checked === true) {
     readCont = 'read';
@@ -44,8 +44,18 @@ function displayBook() {
   let index = (myLibrary.length - 1);
   const div = document.createElement('div');
   div.classList.add('placeholder');
-  div.textContent = myLibrary[index].info;
+  const header = document.createElement('h3');
+  header.textContent = myLibrary[index].title;
+  const pageCountElem = document.createElement('p');
+  pageCountElem.textContent = `pages: ${myLibrary[index].pageCount}`;
+  const authorElem = document.createElement('p');
+  authorElem.textContent = `by ${myLibrary[index].author}`;
+  const toggleRead = document.createElement('button');
+  toggleRead.textContent = 'read?';
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'delete';
   bookShelf.appendChild(div);
+  div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
 }
 
 form.addEventListener('submit', (e) => {

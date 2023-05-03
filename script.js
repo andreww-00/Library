@@ -1,22 +1,20 @@
-const titleElem = document.querySelector("#Title");
-const authorElem = document.querySelector("#Author");
-const pageNumberElem = document.querySelector("#PageCount");
-const readElem = document.querySelector("#read");
-const bookShelf = document.querySelector(".bookshelf");
-const placeHolder = document.querySelector(".placeholder");
-
-
+const titleElem = document.querySelector('#Title');
+const authorElem = document.querySelector('#Author');
+const pageNumberElem = document.querySelector('#PageCount');
+const readElem = document.querySelector('#read');
+const bookShelf = document.querySelector('.bookshelf');
+const placeHolder = document.querySelector('.placeholder');
+const form = document.querySelector('form');
+const newBook = document.querySelector('.new');
 
 const myLibrary = [
   {
-    title: "The Hobbit",
-    author: "J. R. R. Tolkein",
+    title: 'The Hobbit',
+    author: 'J. R. R. Tolkein',
     pageCount: 304,
-    read: "read",
+    read: 'read',
   },
 ];
-
-placeHolder.textContent = (myLibrary[0].title + ' by ' + myLibrary[0].author + ', ' + myLibrary[0].pageCount + ' pages long, ' + myLibrary[0].read); 
 
 function Book(title, author, pageCount, read) {
   this.title = title;
@@ -26,33 +24,41 @@ function Book(title, author, pageCount, read) {
   this.info = `${this.title} by ${this.author} is ${this.pageCount} pages long, is ${this.read}`;
 }
 
-function displayLibrary () {
-  myLibrary.forEach(Element => {
-    let div = document.createElement('div');
-    div.classList.add("placeholder");
-    bookShelf.appendChild(div);
-  });
-}
-
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+function addToLibrary() {
   let titleCont = titleElem.value;
   let authorCont = authorElem.value;
   let pageNumberCont = Number(pageNumberElem.value);
-  let readCont = ""
+  let readCont = '';
   if (readElem.checked === true) {
-    readCont = "read";
+    readCont = 'read';
   } else {
-    readCont = "not read yet";
+    readCont = 'not read yet';
   }
   let newBook = new Book(titleCont, authorCont, pageNumberCont, readCont);
   myLibrary.push(newBook);
-  displayLibrary();
-  document.getElementById("form").classList.toggle("hide");
+}
+
+placeHolder.textContent = myLibrary[0].title + ' by '+ myLibrary[0].author + ', ' + myLibrary[0].pageCount + ' pages long, ' + myLibrary[0].read;
+
+function displayBook() {
+  let index = (myLibrary.length - 1);
+  const div = document.createElement('div');
+  div.classList.add('placeholder');
+  div.textContent = myLibrary[index].info;
+  bookShelf.appendChild(div);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addToLibrary();
+  displayBook();
+  document.getElementById('form').classList.toggle('hide');
 });
 
-let newBook = document.querySelector(".new");
-newBook.addEventListener("click", function () {
-  document.getElementById("form").classList.toggle("hide");
+newBook.addEventListener('click', () => {
+  document.getElementById('form').classList.toggle('hide');
 });
+
+// for (let i = 0; i < myLibrary.length; i += 1) {
+//   console.log('test');
+// }

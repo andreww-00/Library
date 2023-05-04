@@ -53,8 +53,17 @@ function displayBook() {
 
   const deleteButtonElem = document.querySelectorAll('.delete');
   let newestBook = deleteButtonElem.length - 1;
-  deleteButtonElem[newestBook].addEventListener('click', () => {
-    console.log('test');
+  deleteButtonElem[newestBook].addEventListener('click', (e) => {
+    let selectedCard = e.target.dataset.index;
+    let displayedCards = document.querySelectorAll('.placeholder');
+    displayedCards[selectedCard].remove();
+    myLibrary.splice(selectedCard, 1);
+    let deletebuttonElem = document.querySelectorAll('.delete');
+    let store = 0;
+    deletebuttonElem.forEach((item) => {
+      item.dataset.index = store;
+      store += 1;
+    })
   });
 }
 

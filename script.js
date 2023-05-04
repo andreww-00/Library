@@ -6,6 +6,8 @@ const bookShelf = document.querySelector('.bookshelf');
 const form = document.querySelector('form');
 const newBook = document.querySelector('.new');
 
+
+
 const myLibrary = [];
 
 function Book(title, author, pageCount, read) {
@@ -43,9 +45,17 @@ function displayBook() {
   const toggleRead = document.createElement('button');
   toggleRead.textContent = 'read?';
   const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete');
+  deleteButton.dataset.index = index;
   deleteButton.textContent = 'delete';
   bookShelf.appendChild(div);
   div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
+
+  const deleteButtonElem = document.querySelectorAll('.delete');
+  let newestBook = deleteButtonElem.length - 1;
+  deleteButtonElem[newestBook].addEventListener('click', () => {
+    console.log('test');
+  });
 }
 
 form.addEventListener('submit', (e) => {
@@ -66,3 +76,4 @@ myLibrary.push(bookOne);
 displayBook();
 myLibrary.push(bookTwo);
 displayBook();
+

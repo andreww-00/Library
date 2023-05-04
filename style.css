@@ -85,7 +85,43 @@ form > label, button {
 
 .placeholder {
     border: 1px black solid;
-    width: 450px;
-    height: 200px;
+    max-width: 450px;
+    max-height: 200px;
     background-color: #fff;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
+
+.placeholder > h3 {
+    font-size: 25px; 
+}
+
+.placeholder > p:first-of-type{
+    align-self:start;
+    justify-self:end;
+    margin: 0;  
+}
+
+.placeholder > p:last-of-type{
+    align-self:start;
+    justify-self:start;
+    margin: 0;  
+}
+.placeholder > button:nth-of-type(2) {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 2;
+}
+.placeholder > button:first-of-type {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 1;
+}
+
+.placeholder > button {
+    padding: 10px 20px;
+    margin: 0 50px;
+}
+

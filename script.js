@@ -6,8 +6,6 @@ const bookShelf = document.querySelector('.bookshelf');
 const form = document.querySelector('form');
 const newBook = document.querySelector('.new');
 
-
-
 const myLibrary = [];
 
 function Book(title, author, pageCount, read) {
@@ -33,6 +31,7 @@ function addToLibrary() {
 }
 
 function displayBook() {
+  // Stores form information and applies it to card which is then appended to screen
   let index = (myLibrary.length - 1);
   const div = document.createElement('div');
   div.classList.add('placeholder');
@@ -51,6 +50,7 @@ function displayBook() {
   bookShelf.appendChild(div);
   div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
 
+  // Logic for delete buttons
   const deleteButtonElem = document.querySelectorAll('.delete');
   let newestBook = deleteButtonElem.length - 1;
   deleteButtonElem[newestBook].addEventListener('click', (e) => {
@@ -59,14 +59,16 @@ function displayBook() {
     displayedCards[selectedCard].remove();
     myLibrary.splice(selectedCard, 1);
     let deletebuttonElem = document.querySelectorAll('.delete');
+    // Reassigns dataset.index value for each card
     let store = 0;
     deletebuttonElem.forEach((item) => {
       item.dataset.index = store;
       store += 1;
-    })
+    });
   });
 }
 
+// Runs logic for adding book to library array and displaying book on screen
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addToLibrary();
@@ -74,6 +76,7 @@ form.addEventListener('submit', (e) => {
   document.getElementById('form').classList.toggle('hide');
 });
 
+// unhides form on new book button click
 newBook.addEventListener('click', () => {
   document.getElementById('form').classList.toggle('hide');
 });

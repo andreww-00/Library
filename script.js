@@ -48,7 +48,7 @@ function displayBook() {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete');
   deleteButton.dataset.index = index;
-  deleteButton.textContent = 'delete';
+  deleteButton.textContent = '✖';
   bookShelf.appendChild(div);
   div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
 

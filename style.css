@@ -1,7 +1,15 @@
+:root {
+    --text: #0e1f25;
+    --backGround: #c5d5cb;
+    --primaryButton: #778674;
+    --secondaryButton: #effeec;
+    --accent: #d2dfa9;
+}
+
 body {
     width:100vw;
     height: 100vh;
-    background-color: #c5d5cb;
+    background-color: var(--backGround);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -15,6 +23,7 @@ body {
     align-items: center;
     position: fixed;
     top: 0%; 
+    opacity: .8;
 
 }
 
@@ -31,12 +40,9 @@ body {
     opacity: 0.80;
 }
 
-/* .content {
-    margin: 10rem 20rem;
-} */
-
 .header > h3 {
     margin: 0;
+    font-size: 35px;
 }
 
 .bookshelf {
@@ -45,7 +51,6 @@ body {
     gap: 3rem;
     padding: 125px 40px 40px 40px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    /* grid-template-rows: repeat(auto, 100px); */
 }
 
 button {
@@ -64,6 +69,7 @@ form {
     left:40%;
     right:40%;
     top: 10rem;
+    border-radius: 7px;
 }
 
 .hide {
@@ -80,9 +86,16 @@ form {
     right: 4%;
 }
 
-.closeForm:hover {
+.closeForm:hover, .delete:hover {
     color: white;
     -webkit-text-stroke: 2px black;
+}
+
+.delete {
+    margin: 0px; 
+    background: none;
+    font-size: 30px;
+    border: none;
 }
 
 form > label, button {
@@ -91,11 +104,15 @@ form > label, button {
 
 .new {
     background: none;
-    border: black 1px solid;
+    border: black 2px solid;
     height: 2.5rem;
     width: 5rem;
-    border-radius: 10px;
-    
+    border-radius: 7px;
+    background-color: var(--primaryButton);
+}
+
+.new:hover {
+    background-color: var(--accent);
 }
 
 .placeholder > .readStatus {
@@ -104,7 +121,7 @@ form > label, button {
 }
 
 .placeholder {
-    border: 1px black solid;
+    border: 2px black solid;
     max-width: 450px;
     max-height: 200px;
     background-color: #fff;
@@ -112,6 +129,11 @@ form > label, button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    border-radius: 10px;
+    opacity: 0.8;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
 }
 
 .placeholder > h3 {
@@ -120,8 +142,10 @@ form > label, button {
 
 .placeholder > p:first-of-type{
     align-self:start;
-    justify-self:end;
-    margin: 0;  
+    justify-self:start;
+    margin: 0;
+    grid-column-start:1;
+    grid-row-start: 3;  
 }
 
 .placeholder > p:last-of-type{
@@ -132,14 +156,28 @@ form > label, button {
     grid-row-start: 2;
 }
 .placeholder > button:nth-of-type(2) {
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-row-start: 1;
     grid-column-start: 2;
+    margin: 0;
+    align-self: start;
+    justify-self: end;
 }
 .placeholder > button:first-of-type {
     grid-row-start: 3;
     grid-row-end: 3;
-    grid-column-start: 1;
+    grid-column-start: 2;
+    justify-self: end;
+    margin: 0;
+    background: none; 
+}
+
+.✓Read {
+    color: green;
+}
+
+.placeholder > .✓Read:hover {
+    background-color: var(--primaryButton);
+    color: var(--backGround);
 }
 
 .placeholder > button {
@@ -147,11 +185,27 @@ form > label, button {
     margin: 0 50px;
 }
 
-
-.✓Read {
-    color: green;
+.✖Read {
+    color: #742040;
 }
 
-.✖Read {
-    color: red;
+.placeholder > .✖Read:hover {
+    background-color: #742040;
+    color: black;
+}
+
+.placeholder > .readButton {
+    border-radius: 10px;
+}
+
+.submit {
+    background-color: var(--accent);
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.submit:hover {
+    background-color: white;
+    color: var(--primaryButton);
 }

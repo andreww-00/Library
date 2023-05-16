@@ -83,6 +83,11 @@ form > label, button {
     
 }
 
+.placeholder > .readStatus {
+    align-self: end;
+    justify-self: end;
+}
+
 .placeholder {
     border: 1px black solid;
     max-width: 450px;
@@ -108,6 +113,8 @@ form > label, button {
     align-self:start;
     justify-self:start;
     margin: 0;  
+    grid-column-start: 1;
+    grid-row-start: 2;
 }
 .placeholder > button:nth-of-type(2) {
     grid-row-start: 3;
@@ -125,3 +132,11 @@ form > label, button {
     margin: 0 50px;
 }
 
+
+.✓Read {
+    color: green;
+}
+
+.✖Read {
+    color: red;
+}

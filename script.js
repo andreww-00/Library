@@ -22,9 +22,9 @@ function addToLibrary() {
   let pageNumberCont = Number(pageNumberSelector.value);
   let readCont = '';
   if (readElem.checked === true) {
-    readCont = 'read';
+    readCont = '✓ Read';
   } else {
-    readCont = 'not read yet';
+    readCont = '✖ Read';
   }
   let newBook = new Book(titleCont, authorCont, pageNumberCont, readCont);
   myLibrary.push(newBook);
@@ -33,6 +33,7 @@ function addToLibrary() {
 function displayBook() {
   // Stores form information and applies it to card which is then appended to screen
   let index = (myLibrary.length - 1);
+  let modString = `${myLibrary[index].read}`.replace(/\s/g, '');
   const div = document.createElement('div');
   div.classList.add('placeholder');
   const header = document.createElement('h3');
@@ -42,7 +43,8 @@ function displayBook() {
   const authorElem = document.createElement('p');
   authorElem.textContent = `by ${myLibrary[index].author}`;
   const toggleRead = document.createElement('button');
-  toggleRead.textContent = 'read?';
+  toggleRead.textContent = `${myLibrary[index].read}`;
+  toggleRead.classList.add('readButton', modString);
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete');
   deleteButton.dataset.index = index;
@@ -50,6 +52,7 @@ function displayBook() {
   bookShelf.appendChild(div);
   div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
 
+  
   // Logic for delete buttons
   const deleteButtonElem = document.querySelectorAll('.delete');
   let newestBook = deleteButtonElem.length - 1;
@@ -66,7 +69,23 @@ function displayBook() {
       store += 1;
     });
   });
+
+  // Logic for read buttons
+  const readSelector = document.querySelectorAll('.readButton');
+  readSelector[newestBook].addEventListener('click', (e) => {
+    let selectedReadButton = e.target;
+    if (selectedReadButton.textContent === '✓ Read') {
+      selectedReadButton.textContent = '✖ Read';
+      selectedReadButton.classList.add('✖Read');
+      selectedReadButton.classList.remove('✓Read');
+    } else {
+      selectedReadButton.textContent = '✓ Read';
+      selectedReadButton.classList.add('✓Read');
+      selectedReadButton.classList.remove('✖Read');
+    }
+  });
 }
+
 
 // Runs logic for adding book to library array and displaying book on screen
 form.addEventListener('submit', (e) => {
@@ -82,10 +101,11 @@ newBook.addEventListener('click', () => {
 });
 
 // Displays example books on webpage on load.
-const bookOne = new Book('The Hobbit', 'J. R. R. Tolkein', 304, 'read');
-const bookTwo = new Book('Foundations', 'Isaac Asimov', 255, 'not read yet');
+const bookOne = new Book('The Hobbit', 'J. R. R. Tolkein', 304, '✓ Read');
+const bookTwo = new Book('Foundations', 'Isaac Asimov', 255, '✖ Read');
 myLibrary.push(bookOne);
 displayBook();
 myLibrary.push(bookTwo);
 displayBook();
+
 

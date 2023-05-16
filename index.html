@@ -17,17 +17,20 @@
     </div>
     <div class="content">
         <div class="bookshelf"></div>
-        <form action="#" method="post" id="form" class="hide">
-            <label for="Title"></label>
-            <input type="text" id="Title" name="Title" placeholder="Title">
-            <label for="Author"></label>
-            <input type="text" id="Author" name="Author" placeholder="Author">
-            <label for="PageCount"></label>
-            <input type="number" id="PageCount" name="PageCount" placeholder="Number of Pages">
-            <label for="read" class="toggle">Read</label>
-            <input type="checkbox" id="read" name="read" value="yes">
-            <button class="submit">Submit</button>
-        </form>
+        <div class="form">
+            <form action="#" method="post" id="form" class="hide">
+                <button type="button" class="closeForm">✖</button>
+                <label for="Title"></label>
+                <input type="text" id="Title" name="Title" placeholder="Title" required>
+                <label for="Author"></label>
+                <input type="text" id="Author" name="Author" placeholder="Author" required>
+                <label for="PageCount"></label>
+                <input type="number" id="PageCount" name="PageCount" placeholder="Number of Pages" required>
+                <label for="read" class="toggle">Read</label>
+                <input type="checkbox" id="read" name="read" value="yes">
+                <button class="submit">Submit</button>
+            </form>
+        </div>
     </div>
     <div class="footer">
         <p>Footer Content</p>

@@ -5,6 +5,7 @@ const readElem = document.querySelector('#read');
 const bookShelf = document.querySelector('.bookshelf');
 const form = document.querySelector('form');
 const newBook = document.querySelector('.new');
+const closeForm = document.querySelector('.closeForm');
 
 const myLibrary = [];
 
@@ -33,7 +34,6 @@ function addToLibrary() {
 function displayBook() {
   // Stores form information and applies it to card which is then appended to screen
   let index = (myLibrary.length - 1);
-  let modString = `${myLibrary[index].read}`.replace(/\s/g, '');
   const div = document.createElement('div');
   div.classList.add('placeholder');
   const header = document.createElement('h3');
@@ -44,7 +44,7 @@ function displayBook() {
   authorElem.textContent = `by ${myLibrary[index].author}`;
   const toggleRead = document.createElement('button');
   toggleRead.textContent = `${myLibrary[index].read}`;
-  toggleRead.classList.add('readButton', modString);
+  toggleRead.classList.add('readButton', `${myLibrary[index].read}`.replace(/\s/g, ''));
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete');
   deleteButton.dataset.index = index;
@@ -52,7 +52,6 @@ function displayBook() {
   bookShelf.appendChild(div);
   div.append(header, pageCountElem, authorElem, toggleRead, deleteButton);
 
-  
   // Logic for delete buttons
   const deleteButtonElem = document.querySelectorAll('.delete');
   let newestBook = deleteButtonElem.length - 1;
@@ -86,7 +85,6 @@ function displayBook() {
   });
 }
 
-
 // Runs logic for adding book to library array and displaying book on screen
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -95,7 +93,11 @@ form.addEventListener('submit', (e) => {
   document.getElementById('form').classList.toggle('hide');
 });
 
-// unhides form on new book button click
+// Close form button
+closeForm.addEventListener('click', () => {
+  document.getElementById('form').classList.toggle('hide');
+});
+// un-hides form on new book button click
 newBook.addEventListener('click', () => {
   document.getElementById('form').classList.toggle('hide');
 });
@@ -107,5 +109,3 @@ myLibrary.push(bookOne);
 displayBook();
 myLibrary.push(bookTwo);
 displayBook();
-
-
